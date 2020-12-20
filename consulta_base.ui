@@ -6,25 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1043</width>
+    <height>656</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="lb_tela2">
+   <widget class="QTableWidget" name="tb_dados">
     <property name="geometry">
      <rect>
-      <x>234</x>
+      <x>10</x>
       <y>20</y>
-      <width>141</width>
-      <height>61</height>
+      <width>1021</width>
+      <height>421</height>
      </rect>
-    </property>
-    <property name="text">
-     <string>TESTE</string>
     </property>
    </widget>
   </widget>
@@ -33,7 +30,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1043</width>
      <height>26</height>
     </rect>
    </property>

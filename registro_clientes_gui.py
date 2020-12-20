@@ -153,12 +153,35 @@ def inserir_dados():
     formulario.campo_6.setText("")
 
 def consultar_base():
-    
-    
+    segunda_tela.show()
+    cursor = db_connection.cursor()
+    # sql = ("SELECT CONCAT_WS('  ||  ',ID, Nome, CPF, Email, Telefone, Procedimento, Responsável) FROM Pacientes")
+    sql = ("SELECT * FROM Pacientes")
+    cursor.execute(sql)
+    dados_lidos = cursor.fetchall()
+      
+
+    segunda_tela.tb_dados.setRowCount(len(dados_lidos))
+    segunda_tela.tb_dados.setColumnCount(7)
+
+    segunda_tela.tb_dados.setItem(0,0, QtWidgets.QTableWidgetItem("ID"))
+    segunda_tela.tb_dados.setItem(0,1, QtWidgets.QTableWidgetItem("Nome"))
+    segunda_tela.tb_dados.setItem(0,2, QtWidgets.QTableWidgetItem("CPF"))
+    segunda_tela.tb_dados.setItem(0,3, QtWidgets.QTableWidgetItem("E-mail"))
+    segunda_tela.tb_dados.setItem(0,4, QtWidgets.QTableWidgetItem("Telefone"))
+    segunda_tela.tb_dados.setItem(0,5, QtWidgets.QTableWidgetItem("Procedimento"))
+    segunda_tela.tb_dados.setItem(0,6, QtWidgets.QTableWidgetItem("Responsável"))
+
+    for i in range(1, len(dados_lidos)):
+        for j in range(0,7):
+            segunda_tela.tb_dados.setItem(i,j, QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
+
 
 app=QtWidgets.QApplication([])
 formulario=uic.loadUi("formulario.ui")
+segunda_tela=uic.loadUi("consulta_base.ui")
 formulario.botao_inserir.clicked.connect(inserir_dados)
+formulario.botao_consulta.clicked.connect(consultar_base)
 formulario.show()
 app.exec()
 
