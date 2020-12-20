@@ -213,7 +213,50 @@ def consulta_item():
             else:
                 cursor.close()
                 db_connection.commit()
-                menu()       
+                menu() 
+
+        if choose == "5":
+            endereco = input(str("Digite o endereço que está procurando: "))
+            sql = ("SELECT * from Pacientes WHERE Endereço ='%s'") % (endereco)
+            cursor.execute(sql)
+                        
+            for (endereco) in cursor:
+                print("\nApresentando dados solicitados:")
+                lista = ['ID','Nome','E-mail','Telefone','Endereço','Data de Atendimento','Procedimento','Responsável']
+                print(lista)
+                print(endereco)
+            print("\n")
+
+            response = input(str("Gostaria de realizar a consulta novamente? [S/N]? ")).lower()
+            print("\n")
+            if response == 's':
+                flag = True
+            else:
+                cursor.close()
+                db_connection.commit()
+                menu()  
+
+
+        if choose == "6":
+            procedimento = input(str("Digite o procedimento que está procurando: "))
+            sql = ("SELECT * from Pacientes WHERE Procedimento ='%s'") % (procedimento)
+            cursor.execute(sql)
+                        
+            for (procedimento) in cursor:
+                print("\nApresentando dados solicitados:")
+                lista = ['ID','Nome','E-mail','Telefone','Endereço','Data de Atendimento','Procedimento','Responsável']
+                print(lista)
+                print(procedimento)
+            print("\n")
+
+            response = input(str("Gostaria de realizar a consulta novamente? [S/N]? ")).lower()
+            print("\n")
+            if response == 's':
+                flag = True
+            else:
+                cursor.close()
+                db_connection.commit()
+                menu()  
 
 
 
