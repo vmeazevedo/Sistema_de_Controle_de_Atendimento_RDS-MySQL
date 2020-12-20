@@ -131,7 +131,7 @@ def consulta_item():
         print("6 - Responsável")
         choose = input(str("Selecione o tipo de consulta, exemplo(Consulta por Nome): "))
         if choose == "1":
-            nome = input(str("Digite o nome que está procurando: "))
+            nome = input(str("Digite o nome que está procurando: ")).title()
             sql = ("SELECT * from Pacientes WHERE Nome ='%s'") % (nome)
             cursor.execute(sql)
                         
@@ -173,7 +173,7 @@ def consulta_item():
                 menu()
 
         if choose == "3":
-            email = input(str("Digite o e-mail que está procurando: "))
+            email = input(str("Digite o e-mail que está procurando: ")).lower()
             sql = ("SELECT * from Pacientes WHERE Email ='%s'") % (email)
             cursor.execute(sql)
                         
@@ -215,7 +215,7 @@ def consulta_item():
                 menu() 
 
         if choose == "5":
-            procedimento = input(str("Digite o procedimento que está procurando: "))
+            procedimento = input(str("Digite o procedimento que está procurando: ")).capitalize()
             sql = ("SELECT * from Pacientes WHERE Procedimento ='%s'") % (procedimento)
             cursor.execute(sql)
                         
@@ -236,7 +236,7 @@ def consulta_item():
                 menu()  
 
         if choose == "6":
-            responsavel = input(str("Digite o responsável que está procurando: "))
+            responsavel = input(str("Digite o responsável que está procurando: ")).title()
             sql = ("SELECT * from Pacientes WHERE Responsável ='%s'") % (responsavel)
             cursor.execute(sql)
                         
