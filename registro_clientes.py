@@ -148,10 +148,32 @@ def consulta_item():
             if response == 's':
                 flag = True
             else:
-                break
-    cursor.close()
-    db_connection.commit()
-    menu()
+                cursor.close()
+                db_connection.commit()
+                menu()
+
+        if choose == "2":
+            cpf = input(str("Digite o nome que está procurando: "))
+            sql = ("SELECT * from Pacientes WHERE cpf ='%s'") % (cpf)
+            cursor.execute(sql)
+                        
+            for (cpf) in cursor:
+                print("\nApresentando dados solicitados:")
+                lista = ['ID','Nome','E-mail','Telefone','Endereço','Data de Atendimento','Procedimento','Responsável']
+                print(lista)
+                print(cpf)
+            print("\n")
+
+            response = input(str("Gostaria de realizar a consulta novamente? [S/N]? ")).lower()
+            print("\n")
+            if response == 's':
+                flag = True
+            else:
+                cursor.close()
+                db_connection.commit()
+                menu()
+
+
 
 def update():
     flag = True
