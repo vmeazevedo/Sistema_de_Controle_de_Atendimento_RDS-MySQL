@@ -75,11 +75,10 @@ def inserir():
         cpf = input(str("CPF: "))
         Email = input(str("E-mail: ")).lower()
         Telefone = input(str("Tel: "))
-        Endereço = input(str("Endereço: ")).title()
         Procedimento = input(str("Procedimento: ")).capitalize()
         Responsável = input(str("Responsável: ")).title()
 
-        sql = "INSERT INTO Pacientes (Nome, CPF, Email, Telefone, Endereço, Procedimento, Responsável) VALUES ('%s', '%s', '%s','%s', '%s', '%s', '%s')" % (Nome, cpf, Email, Telefone, Endereço,Procedimento, Responsável)
+        sql = "INSERT INTO Pacientes (Nome, CPF, Email, Telefone, Procedimento, Responsável) VALUES ('%s', '%s','%s', '%s', '%s', '%s')" % (Nome, cpf, Email, Telefone, Procedimento, Responsável)
         cursor.execute(sql)
         print("\nDados inseridos com sucesso")
 
@@ -104,10 +103,10 @@ def consulta_base():
         rows = cursor.fetchall()
     
         # Apresentando a base de dados completa
-        sql = ("SELECT ID, Nome, CPF, Email, Telefone, Endereço, Procedimento, Responsável FROM Pacientes")
+        sql = ("SELECT ID, Nome, CPF, Email, Telefone, Procedimento, Responsável FROM Pacientes")
         cursor.execute(sql)
-        for (ID, Nome, cpf, Email, Telefone, Endereço, Procedimento, Responsável) in cursor:
-            print(ID, Nome, cpf, Email, Telefone, Endereço, Procedimento, Responsável)
+        for (ID, Nome, cpf, Email, Telefone, Procedimento, Responsável) in cursor:
+            print(ID, Nome, cpf, Email, Telefone, Procedimento, Responsável)
         print("\n")
 
         response = input(str("Gostaria de realizar a consulta novamente? [S/N]? ")).lower()
@@ -128,9 +127,8 @@ def consulta_item():
         print("2 - CPF")
         print("3 - E-mail")
         print("4 - Telefone")
-        print("5 - Endereço")
-        print("6 - Procedimento")
-        print("7 - Responsável")
+        print("5 - Procedimento")
+        print("6 - Responsável")
         choose = input(str("Selecione o tipo de consulta, exemplo(Consulta por Nome): "))
         if choose == "1":
             nome = input(str("Digite o nome que está procurando: "))
@@ -139,7 +137,7 @@ def consulta_item():
                         
             for (Nome) in cursor:
                 print("\nApresentando dados solicitados:")
-                lista = ['ID','Nome','E-mail','Telefone','Endereço','Data de Atendimento','Procedimento','Responsável']
+                lista = ['ID','Nome','E-mail','Telefone','Data de Atendimento','Procedimento','Responsável']
                 print(lista)
                 print(Nome)
             print("\n")
@@ -160,7 +158,7 @@ def consulta_item():
                         
             for (cpf) in cursor:
                 print("\nApresentando dados solicitados:")
-                lista = ['ID','Nome','E-mail','Telefone','Endereço','Data de Atendimento','Procedimento','Responsável']
+                lista = ['ID','Nome','E-mail','Telefone','Data de Atendimento','Procedimento','Responsável']
                 print(lista)
                 print(cpf)
             print("\n")
@@ -181,7 +179,7 @@ def consulta_item():
                         
             for (email) in cursor:
                 print("\nApresentando dados solicitados:")
-                lista = ['ID','Nome','E-mail','Telefone','Endereço','Data de Atendimento','Procedimento','Responsável']
+                lista = ['ID','Nome','E-mail','Telefone','Data de Atendimento','Procedimento','Responsável']
                 print(lista)
                 print(email)
             print("\n")
@@ -202,7 +200,7 @@ def consulta_item():
                         
             for (telefone) in cursor:
                 print("\nApresentando dados solicitados:")
-                lista = ['ID','Nome','E-mail','Telefone','Endereço','Data de Atendimento','Procedimento','Responsável']
+                lista = ['ID','Nome','E-mail','Telefone','Data de Atendimento','Procedimento','Responsável']
                 print(lista)
                 print(telefone)
             print("\n")
@@ -217,34 +215,13 @@ def consulta_item():
                 menu() 
 
         if choose == "5":
-            endereco = input(str("Digite o endereço que está procurando: "))
-            sql = ("SELECT * from Pacientes WHERE Endereço ='%s'") % (endereco)
-            cursor.execute(sql)
-                        
-            for (endereco) in cursor:
-                print("\nApresentando dados solicitados:")
-                lista = ['ID','Nome','E-mail','Telefone','Endereço','Data de Atendimento','Procedimento','Responsável']
-                print(lista)
-                print(endereco)
-            print("\n")
-
-            response = input(str("Gostaria de realizar a consulta novamente? [S/N]? ")).lower()
-            print("\n")
-            if response == 's':
-                flag = True
-            else:
-                cursor.close()
-                db_connection.commit()
-                menu()  
-
-        if choose == "6":
             procedimento = input(str("Digite o procedimento que está procurando: "))
             sql = ("SELECT * from Pacientes WHERE Procedimento ='%s'") % (procedimento)
             cursor.execute(sql)
                         
             for (procedimento) in cursor:
                 print("\nApresentando dados solicitados:")
-                lista = ['ID','Nome','E-mail','Telefone','Endereço','Data de Atendimento','Procedimento','Responsável']
+                lista = ['ID','Nome','E-mail','Telefone','Data de Atendimento','Procedimento','Responsável']
                 print(lista)
                 print(procedimento)
             print("\n")
@@ -258,14 +235,14 @@ def consulta_item():
                 db_connection.commit()
                 menu()  
 
-        if choose == "7":
+        if choose == "6":
             responsavel = input(str("Digite o responsável que está procurando: "))
             sql = ("SELECT * from Pacientes WHERE Responsável ='%s'") % (responsavel)
             cursor.execute(sql)
                         
             for (responsavel) in cursor:
                 print("\nApresentando dados solicitados:")
-                lista = ['ID','Nome','E-mail','Telefone','Endereço','Data de Atendimento','Procedimento','Responsável']
+                lista = ['ID','Nome','E-mail','Telefone','Data de Atendimento','Procedimento','Responsável']
                 print(lista)
                 print(responsavel)
             print("\n")
