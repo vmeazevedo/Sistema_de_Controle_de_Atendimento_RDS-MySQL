@@ -236,7 +236,6 @@ def consulta_item():
                 db_connection.commit()
                 menu()  
 
-
         if choose == "6":
             procedimento = input(str("Digite o procedimento que está procurando: "))
             sql = ("SELECT * from Pacientes WHERE Procedimento ='%s'") % (procedimento)
@@ -258,8 +257,26 @@ def consulta_item():
                 db_connection.commit()
                 menu()  
 
+        if choose == "7":
+            responsavel = input(str("Digite o responsável que está procurando: "))
+            sql = ("SELECT * from Pacientes WHERE Responsável ='%s'") % (responsavel)
+            cursor.execute(sql)
+                        
+            for (responsavel) in cursor:
+                print("\nApresentando dados solicitados:")
+                lista = ['ID','Nome','E-mail','Telefone','Endereço','Data de Atendimento','Procedimento','Responsável']
+                print(lista)
+                print(responsavel)
+            print("\n")
 
-
+            response = input(str("Gostaria de realizar a consulta novamente? [S/N]? ")).lower()
+            print("\n")
+            if response == 's':
+                flag = True
+            else:
+                cursor.close()
+                db_connection.commit()
+                menu()                
 
 def update():
     flag = True
