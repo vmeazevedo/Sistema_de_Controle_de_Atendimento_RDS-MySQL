@@ -25,12 +25,12 @@ CREATE TABLE Pacientes (
 ###############################################################################################################
 try:
 	db_connection = mysql.connector.connect(host='localhost', user='root', password='', database='Registro')
-	print("\nDatabase connection made!\n")
+	print("\nConexão com a base de dados realizada!\n")
 except mysql.connector.Error as error:
 	if error.errno == errorcode.ER_BAD_DB_ERROR:
-		print("\nDatabase doesn't exist")
+		print("\nA base de dados não existe.")
 	elif error.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-		print("\nUser name or password is wrong")
+		print("\nUsername ou o password está errado.")
 	else:
 		print(error)
 ###############################################################################################################
