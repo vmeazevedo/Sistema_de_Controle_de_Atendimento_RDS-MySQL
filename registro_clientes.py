@@ -270,37 +270,34 @@ def consulta_item():
 
 def update():
     flag = True
+    # Loop para realização de mais de uma correção
     while True:
         cursor = db_connection.cursor()
         print("1 - Nome")
         print("2 - CPF")
         print("3 - E-mail")
         print("4 - Telefone")
-        print("5 - Endereço")
-        print("6 - Procedimento")
-        print("7 - Responsável")
         choose = input(str("Selecione o campo para alteração: "))
         if choose == "1":
-            cpf = input(str("Informe o CPF: "))
-            nome = input(str("Digite o novo nome: "))
+            cpf = input(str("\nInforme o CPF do usuário: "))
+            nome = input(str("Digite o nome corrigido: ")).title()
+            # Update do nome utilizando o CPF como primary key
             sql = ("update Pacientes set Nome = '%s' where cpf='%s'") % (nome, cpf)
             cursor.execute(sql)
-            cursor.close()
-            db_connection.commit()
-
-            response = input(str("Gostaria de adicionar mais um registro? [S/N]? ")).lower()
+            # Realizando um select para comprovar a alteração do campo
+            sql = ("SELECT Nome from Pacientes WHERE Nome ='%s'") % (nome)
+            cursor.execute(sql)
+            for (nome) in cursor:
+                print("\nNome alterado com sucesso:", nome ,"\n")
+            # Confirmação se o usuário gostaria de corrigir outro campo
+            response = input(str("Gostaria de corrigir algum outro campo? [S/N]? ")).lower()
             print("\n")
             if response == 's':
                 flag = True
             else:
-                break
-    menu()
-        
-        # sql = ("SELECT id, name, cpf FROM user")
-        # cursor.execute(sql)
-        # for (id, name, cpf) in cursor:
-        #     print(id, name, cpf)
-        # cursor.close()
-        # db_connection.commit()
+                cursor.close()
+                db_connection.commit()
+                menu()
+
 
 menu()
