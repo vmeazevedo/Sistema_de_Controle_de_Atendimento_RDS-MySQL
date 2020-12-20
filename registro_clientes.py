@@ -274,9 +274,8 @@ def update():
     while True:
         cursor = db_connection.cursor()
         print("1 - Nome")
-        print("2 - CPF")
-        print("3 - E-mail")
-        print("4 - Telefone")
+        print("2 - E-mail")
+        print("3 - Telefone")
         choose = input(str("Selecione o campo para alteração: "))
         if choose == "1":
             cpf = input(str("\nInforme o CPF do usuário: "))
@@ -289,6 +288,48 @@ def update():
             cursor.execute(sql)
             for (nome) in cursor:
                 print("\nNome alterado com sucesso:", nome ,"\n")
+            # Confirmação se o usuário gostaria de corrigir outro campo
+            response = input(str("Gostaria de corrigir algum outro campo? [S/N]? ")).lower()
+            print("\n")
+            if response == 's':
+                flag = True
+            else:
+                cursor.close()
+                db_connection.commit()
+                menu()
+
+        if choose == "2":
+            cpf = input(str("\nInforme o CPF do usuário: "))
+            email = input(str("Digite o email corrigido: ")).lower()
+            # Update do e-mail utilizando o CPF como primary key
+            sql = ("update Pacientes set Email = '%s' where cpf='%s'") % (email, cpf)
+            cursor.execute(sql)
+            # Realizando um select para comprovar a alteração do campo
+            sql = ("SELECT Email from Pacientes WHERE Email ='%s'") % (email)
+            cursor.execute(sql)
+            for (nome) in cursor:
+                print("\nE-mail alterado com sucesso:", email ,"\n")
+            # Confirmação se o usuário gostaria de corrigir outro campo
+            response = input(str("Gostaria de corrigir algum outro campo? [S/N]? ")).lower()
+            print("\n")
+            if response == 's':
+                flag = True
+            else:
+                cursor.close()
+                db_connection.commit()
+                menu()
+
+        if choose == "3":
+            cpf = input(str("\nInforme o CPF do usuário: "))
+            telefone = input(str("Digite o telefone corrigido: "))
+            # Update do e-mail utilizando o CPF como primary key
+            sql = ("update Pacientes set Telefone = '%s' where cpf='%s'") % (telefone, cpf)
+            cursor.execute(sql)
+            # Realizando um select para comprovar a alteração do campo
+            sql = ("SELECT Telefone from Pacientes WHERE Telefone ='%s'") % (telefone)
+            cursor.execute(sql)
+            for (nome) in cursor:
+                print("\nTelefone alterado com sucesso:", telefone ,"\n")
             # Confirmação se o usuário gostaria de corrigir outro campo
             response = input(str("Gostaria de corrigir algum outro campo? [S/N]? ")).lower()
             print("\n")
