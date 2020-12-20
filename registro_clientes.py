@@ -153,7 +153,7 @@ def consulta_item():
                 menu()
 
         if choose == "2":
-            cpf = input(str("Digite o nome que está procurando: "))
+            cpf = input(str("Digite o CPF que está procurando: "))
             sql = ("SELECT * from Pacientes WHERE cpf ='%s'") % (cpf)
             cursor.execute(sql)
                         
@@ -162,6 +162,27 @@ def consulta_item():
                 lista = ['ID','Nome','E-mail','Telefone','Endereço','Data de Atendimento','Procedimento','Responsável']
                 print(lista)
                 print(cpf)
+            print("\n")
+
+            response = input(str("Gostaria de realizar a consulta novamente? [S/N]? ")).lower()
+            print("\n")
+            if response == 's':
+                flag = True
+            else:
+                cursor.close()
+                db_connection.commit()
+                menu()
+
+        if choose == "3":
+            email = input(str("Digite o E-mail que está procurando: "))
+            sql = ("SELECT * from Pacientes WHERE email ='%s'") % (email)
+            cursor.execute(sql)
+                        
+            for (email) in cursor:
+                print("\nApresentando dados solicitados:")
+                lista = ['ID','Nome','E-mail','Telefone','Endereço','Data de Atendimento','Procedimento','Responsável']
+                print(lista)
+                print(email)
             print("\n")
 
             response = input(str("Gostaria de realizar a consulta novamente? [S/N]? ")).lower()
