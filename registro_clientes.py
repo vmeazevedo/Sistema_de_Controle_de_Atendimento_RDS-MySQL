@@ -2,7 +2,9 @@ import mysql.connector
 from mysql.connector import errorcode
 from mysql.connector import cursor
 
-# No MySQL Workbench criar uma conexão e após isso realizar a criação da base e das tabelas
+###############################################################################################################
+# MySQL Workbench - Realizar a criação da base e da tabela.
+###############################################################################################################
 '''
 create database Registro;
 use Registro;
@@ -12,19 +14,26 @@ CREATE TABLE Pacientes (
   cpf varchar(50) not null,
   Email varchar(200) not null,
   Telefone varchar(20) not null,
-  Endereço varchar(100) not null,
   Data TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   Procedimento varchar(255) not null,
   Responsável varchar(100) not null,
   primary key (id)
   ) engine=innodb;
 '''
+###############################################################################################################
+
 
 ###############################################################################################################
-# CONEXÃO 
+# Conexão da instância RDS - Amazon Web Service
 ###############################################################################################################
+# Preencher os campos de conexão abaixo
+host = 'localhost'      # Endpoint da instância RDS na cloud da AWS
+user = 'root'           # Username criado na hora de realizar a instância RDS
+password = ''           # Password criado na hora de realizar a instância RDS
+database = 'Registro'   # Database criada no MySQL
+
 try:
-	db_connection = mysql.connector.connect(host='localhost', user='root', password='', database='Registro')
+	db_connection = mysql.connector.connect(host = host, user = user, password = password, database = database)
 	print("\nConexão com a base de dados realizada!\n")
 except mysql.connector.Error as error:
 	if error.errno == errorcode.ER_BAD_DB_ERROR:
@@ -119,6 +128,9 @@ def consulta_base():
     db_connection.commit()
     menu()
 
+'''
+Realizar o tratamento de exceção das entrada de dados da consulta por item.
+'''
 def consulta_item():
     flag = True
     while True:
