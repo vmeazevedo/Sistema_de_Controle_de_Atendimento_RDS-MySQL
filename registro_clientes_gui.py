@@ -107,3 +107,4 @@ formulario.botao_consulta.clicked.connect(consultar_base)
 formulario.show()
 app.exec()
 
+# teste
