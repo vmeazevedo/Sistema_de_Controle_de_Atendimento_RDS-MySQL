@@ -36,29 +36,29 @@ except mysql.connector.Error as error:
 ###############################################################################################################
 
 def menu():
-    print("====================================")
-    print("         Sistema de Controle        ")
-    print("====================================\n")
+    print("===================================================")
+    print("         Sistema de Controle de Atendimento        ")
+    print("===================================================\n")
 
-    print("Menu:")
-    print("1 - Inserir dados")
-    print("2 - Consultar dados")
-    print("3 - Consulta por item")
-    print("4 - Alterar dados cadastrais\n")
+    print("Opções:")
+    print("1 - Cadastro de novo atendimento")
+    print("2 - Visualizar os atendimentos realizados")
+    print("3 - Realização de consulta por item")
+    print("4 - Alteração de dados cadastrados\n")
     flag = True
     while True:
-        choose = input(str("Indique a operação desejada: "))
+        choose = input(str("Informe a operação desejada: "))
         if choose == "1":
-            print("Inserção de dados selecionado.\n")
+            print("Cadastro de novo atendimento selecionado.\n")
             inserir()
         elif choose == "2":
-            print("Consulta da base selecionada.\n")
+            print("Visualização dos atendimentos realizados selecionado.\n")
             consulta_base()
         elif choose == "3":
-            print("Consulta por item selecionada.\n")
+            print("Realização de consulta por item selecionada.\n")
             consulta_item()
         elif choose == "4":
-            print("Atualização de dados selecionado.\n")
+            print("Alteração de dados cadastrados selecionado.\n")
             update()
         else:
             print("AVISO: Digite somente o número de uma das opções apresentados.\n")
@@ -70,13 +70,14 @@ def inserir():
     flag = True
     while True:
         # input manual dentro do INSERT
-        Nome = input(str("Nome: "))
+        print("Por favor, preencha os campos abaixo conforme solicitado.")
+        Nome = input(str("Nome: ")).title()
         cpf = input(str("CPF: "))
-        Email = input(str("E-mail: "))
+        Email = input(str("E-mail: ")).lower()
         Telefone = input(str("Tel: "))
-        Endereço = input(str("Endereço: "))
-        Procedimento = input(str("Procedimento: "))
-        Responsável = input(str("Responsável: "))
+        Endereço = input(str("Endereço: ")).title()
+        Procedimento = input(str("Procedimento: ")).capitalize()
+        Responsável = input(str("Responsável: ")).title()
 
         sql = "INSERT INTO Pacientes (Nome, CPF, Email, Telefone, Endereço, Procedimento, Responsável) VALUES ('%s', '%s', '%s','%s', '%s', '%s', '%s')" % (Nome, cpf, Email, Telefone, Endereço,Procedimento, Responsável)
         cursor.execute(sql)
