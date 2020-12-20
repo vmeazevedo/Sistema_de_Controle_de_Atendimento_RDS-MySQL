@@ -45,92 +45,10 @@ except mysql.connector.Error as error:
 		print(error)
 ###############################################################################################################
 
-def menu():
-    print("===================================================")
-    print("         Sistema de Controle de Atendimento        ")
-    print("===================================================\n")
-
-    print("Opções:")
-    print("1 - Cadastro de novo atendimento")
-    print("2 - Visualizar os atendimentos realizados")
-    print("3 - Realização de consulta por item")
-    print("4 - Alteração de dados cadastrados\n")
-    flag = True
-    while True:
-        choose = input(str("Informe a operação desejada: "))
-        if choose == "1":
-            print("Cadastro de novo atendimento selecionado.\n")
-            inserir()
-        elif choose == "2":
-            print("Visualização dos atendimentos realizados selecionado.\n")
-            consulta_base()
-        elif choose == "3":
-            print("Realização de consulta por item selecionada.\n")
-            consulta_item()
-        elif choose == "4":
-            print("Alteração de dados cadastrados selecionado.\n")
-            update()
-        else:
-            print("AVISO: Digite somente o número de uma das opções apresentados.\n")
-
-def inserir():
-    # Declaração de variável
-    cursor = db_connection.cursor()
-    
-    flag = True
-    while True:
-        # input manual dentro do INSERT
-        print("Por favor, preencha os campos abaixo conforme solicitado.")
-        Nome = input(str("Nome: ")).title()
-        cpf = input(str("CPF: "))
-        Email = input(str("E-mail: ")).lower()
-        Telefone = input(str("Tel: "))
-        Procedimento = input(str("Procedimento: ")).capitalize()
-        Responsável = input(str("Responsável: ")).title()
-
-        sql = "INSERT INTO Pacientes (Nome, CPF, Email, Telefone, Procedimento, Responsável) VALUES ('%s', '%s','%s', '%s', '%s', '%s')" % (Nome, cpf, Email, Telefone, Procedimento, Responsável)
-        cursor.execute(sql)
-        print("\nDados inseridos com sucesso")
-
-        response = input(str("Gostaria de adicionar mais um registro? [S/N]? ")).lower()
-        print("\n")
-        if response == 's':
-            flag = True
-        else:
-            break
-    cursor.close()
-    db_connection.commit()
-    menu()
-
-def consulta_base():
-    flag = True
-    while True:
-        cursor = db_connection.cursor()
-        # Apresentando o header da base de dados
-        sql = ("SELECT * FROM Pacientes")
-        cursor.execute(sql)
-        print(cursor.column_names)
-        rows = cursor.fetchall()
-    
-        # Apresentando a base de dados completa
-        sql = ("SELECT CONCAT_WS('  ||  ',ID, Nome, CPF, Email, Telefone, Procedimento, Responsável) FROM Pacientes")
-        cursor.execute(sql)
-        for (x) in cursor:
-            print(x)
-        print("\n")
-
-        response = input(str("Gostaria de realizar a consulta novamente? [S/N]? ")).lower()
-        print("\n")
-        if response == 's':
-            flag = True
-        else:
-            break
-    cursor.close()
-    db_connection.commit()
-    menu()
-
 def inserir_dados():
+    # Inicializa a variavel do cursor
     cursor = db_connection.cursor()
+    # Inicializa as variaveis de texto
     Nome = formulario.campo_1.text().title()
     cpf = formulario.campo_2.text()
     Email = formulario.campo_3.text().lower()
@@ -153,17 +71,19 @@ def inserir_dados():
     formulario.campo_6.setText("")
 
 def consultar_base():
+    # Chama a segunda tela 
     segunda_tela.show()
+    # Inicializa a variavel do cursor
     cursor = db_connection.cursor()
-    # sql = ("SELECT CONCAT_WS('  ||  ',ID, Nome, CPF, Email, Telefone, Procedimento, Responsável) FROM Pacientes")
+    # Query para apresentar todos os dados da base
     sql = ("SELECT * FROM Pacientes")
     cursor.execute(sql)
+    # Salvando o resultado da query em uma variável
     dados_lidos = cursor.fetchall()
-      
-
+    # Informando o tamanho das linhas e colunas da base
     segunda_tela.tb_dados.setRowCount(len(dados_lidos))
     segunda_tela.tb_dados.setColumnCount(7)
-
+    # Criando um header para a base
     segunda_tela.tb_dados.setItem(0,0, QtWidgets.QTableWidgetItem("ID"))
     segunda_tela.tb_dados.setItem(0,1, QtWidgets.QTableWidgetItem("Nome"))
     segunda_tela.tb_dados.setItem(0,2, QtWidgets.QTableWidgetItem("CPF"))
@@ -171,15 +91,17 @@ def consultar_base():
     segunda_tela.tb_dados.setItem(0,4, QtWidgets.QTableWidgetItem("Telefone"))
     segunda_tela.tb_dados.setItem(0,5, QtWidgets.QTableWidgetItem("Procedimento"))
     segunda_tela.tb_dados.setItem(0,6, QtWidgets.QTableWidgetItem("Responsável"))
-
+    # Realizando um loop para preencher os campos da tabela com os valores da base de dados
     for i in range(1, len(dados_lidos)):
         for j in range(0,7):
             segunda_tela.tb_dados.setItem(i,j, QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
 
 
 app=QtWidgets.QApplication([])
+# Load das telas criadas
 formulario=uic.loadUi("formulario.ui")
 segunda_tela=uic.loadUi("consulta_base.ui")
+# Botões das telas
 formulario.botao_inserir.clicked.connect(inserir_dados)
 formulario.botao_consulta.clicked.connect(consultar_base)
 formulario.show()

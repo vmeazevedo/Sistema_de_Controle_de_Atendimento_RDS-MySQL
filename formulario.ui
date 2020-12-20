@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>369</width>
-    <height>441</height>
+    <width>279</width>
+    <height>435</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,10 +18,16 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>20</y>
       <width>141</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>NOME</string>
@@ -31,10 +37,16 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>50</y>
+      <y>60</y>
       <width>141</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>CPF</string>
@@ -44,10 +56,16 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>90</y>
+      <y>100</y>
       <width>141</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>EMAIL</string>
@@ -57,10 +75,16 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>130</y>
+      <y>140</y>
       <width>141</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>TELEFONE</string>
@@ -70,10 +94,16 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>210</y>
+      <y>220</y>
       <width>141</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>RESPONSAVEL</string>
@@ -83,10 +113,16 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>170</y>
+      <y>180</y>
       <width>141</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>PROCEDIMENTO</string>
@@ -102,14 +138,14 @@
      </rect>
     </property>
     <property name="text">
-     <string>INSERIR</string>
+     <string>INSERIR DADOS</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="campo_1">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>20</y>
+      <x>120</x>
+      <y>30</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -118,8 +154,8 @@
    <widget class="QLineEdit" name="campo_2">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>60</y>
+      <x>120</x>
+      <y>70</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -128,8 +164,8 @@
    <widget class="QLineEdit" name="campo_3">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>100</y>
+      <x>120</x>
+      <y>110</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -138,8 +174,8 @@
    <widget class="QLineEdit" name="campo_5">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>180</y>
+      <x>120</x>
+      <y>190</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -148,8 +184,8 @@
    <widget class="QLineEdit" name="campo_6">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>220</y>
+      <x>120</x>
+      <y>230</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -158,8 +194,8 @@
    <widget class="QLineEdit" name="campo_4">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>140</y>
+      <x>120</x>
+      <y>150</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -168,8 +204,8 @@
    <widget class="QPushButton" name="botao_consulta">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>270</y>
+      <x>10</x>
+      <y>340</y>
       <width>111</width>
       <height>51</height>
      </rect>
@@ -184,7 +220,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>369</width>
+     <width>279</width>
      <height>26</height>
     </rect>
    </property>
