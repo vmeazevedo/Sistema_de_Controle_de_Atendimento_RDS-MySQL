@@ -112,10 +112,10 @@ def consulta_base():
         rows = cursor.fetchall()
     
         # Apresentando a base de dados completa
-        sql = ("SELECT ID, Nome, CPF, Email, Telefone, Procedimento, Responsável FROM Pacientes")
+        sql = ("SELECT CONCAT_WS('  ||  ',ID, Nome, CPF, Email, Telefone, Procedimento, Responsável) FROM Pacientes")
         cursor.execute(sql)
-        for (ID, Nome, cpf, Email, Telefone, Procedimento, Responsável) in cursor:
-            print(ID, Nome, cpf, Email, Telefone, Procedimento, Responsável)
+        for (x) in cursor:
+            print(x)
         print("\n")
 
         response = input(str("Gostaria de realizar a consulta novamente? [S/N]? ")).lower()
