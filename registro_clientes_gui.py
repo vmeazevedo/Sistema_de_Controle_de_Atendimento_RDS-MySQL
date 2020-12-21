@@ -45,8 +45,10 @@ except mysql.connector.Error as error:
 		print(error)
 ###############################################################################################################
 
-def inserir_dados():
+def apresentar_formulario():
     formulario.show()
+
+def inserir_dados():
     # Inicializa a variavel do cursor
     cursor = db_connection.cursor()
     # Inicializa as variaveis de texto
@@ -85,35 +87,70 @@ def consultar_base():
     segunda_tela.tb_dados.setRowCount(len(dados_lidos))
     segunda_tela.tb_dados.setColumnCount(8)
     # Criando um header para a base
-    segunda_tela.tb_dados.setItem(0,0, QtWidgets.QTableWidgetItem("ID"))
-    segunda_tela.tb_dados.setItem(0,1, QtWidgets.QTableWidgetItem("Nome"))
-    segunda_tela.tb_dados.setItem(0,2, QtWidgets.QTableWidgetItem("CPF"))
-    segunda_tela.tb_dados.setItem(0,3, QtWidgets.QTableWidgetItem("E-mail"))
-    segunda_tela.tb_dados.setItem(0,4, QtWidgets.QTableWidgetItem("Telefone"))
-    segunda_tela.tb_dados.setItem(0,5, QtWidgets.QTableWidgetItem("Data"))
-    segunda_tela.tb_dados.setItem(0,6, QtWidgets.QTableWidgetItem("Procedimento"))
-    segunda_tela.tb_dados.setItem(0,7, QtWidgets.QTableWidgetItem("Responsável"))
+    # segunda_tela.tb_dados.setItem(0,0, QtWidgets.QTableWidgetItem("ID"))
+    # segunda_tela.tb_dados.setItem(0,1, QtWidgets.QTableWidgetItem("Nome"))
+    # segunda_tela.tb_dados.setItem(0,2, QtWidgets.QTableWidgetItem("CPF"))
+    # segunda_tela.tb_dados.setItem(0,3, QtWidgets.QTableWidgetItem("E-mail"))
+    # segunda_tela.tb_dados.setItem(0,4, QtWidgets.QTableWidgetItem("Telefone"))
+    # segunda_tela.tb_dados.setItem(0,5, QtWidgets.QTableWidgetItem("Data"))
+    # segunda_tela.tb_dados.setItem(0,6, QtWidgets.QTableWidgetItem("Procedimento"))
+    # segunda_tela.tb_dados.setItem(0,7, QtWidgets.QTableWidgetItem("Responsável"))
     # Realizando um loop para preencher os campos da tabela com os valores da base de dados
-    for i in range(1, len(dados_lidos)):
+    for i in range(0, len(dados_lidos)):
         for j in range(0,8):
             segunda_tela.tb_dados.setItem(i,j, QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
 
+def apresentar_pesquisar():
+    pesquisar_item.show()
+
 def busca_por_item():
-    print("teste")
+    resultado_por_item.show()
+    cursor = db_connection.cursor()
+    if pesquisar_item.sl_nome.isChecked():
+        nome = pesquisar_item.campo_1.text().title()
+        # Query para apresentar os dados pesquisados
+        sql = ("SELECT * from Pacientes WHERE Nome ='%s'") % (str(nome))
+        cursor.execute(sql)
+        # Salvando o resultado da query em uma variável
+        dados_lidos = cursor.fetchall()
+        
+        # Informando o tamanho das linhas e colunas da base
+        resultado_por_item.tb_dados.setRowCount(len(dados_lidos))
+        resultado_por_item.tb_dados.setColumnCount(8)
+        # Realizando um loop para preencher os campos da tabela com os valores da base de dados         
+        for i in range(0, len(dados_lidos)):
+            for j in range(0,8):
+                resultado_por_item.tb_dados.setItem(i,j, QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
+
+        
+
+    elif pesquisar_item.sl_cpf.isChecked():
+        print("nome")
+    elif pesquisar_item.sl_email.isChecked():
+        print("nome")
+    elif pesquisar_item.sl_telefone.isChecked():
+        print("nome")
+    elif pesquisar_item.sl_procedimento.isChecked():
+        print("nome")
+    elif pesquisar_item.sl_responsavel.isChecked():
+        print("nome")
+
 
 app=QtWidgets.QApplication([])
+
 # Load das telas criadas
 tela_inicial=uic.loadUi("tela_inicial.ui")
 formulario=uic.loadUi("formulario.ui")
 segunda_tela=uic.loadUi("consulta_base.ui")
+pesquisar_item=uic.loadUi("busca_item.ui")
+resultado_por_item=uic.loadUi("pesquisa_por_item.ui")
 
 # Botões das telas
+tela_inicial.botao_cadastro.clicked.connect(apresentar_formulario)
 formulario.botao_inserir.clicked.connect(inserir_dados)
-# formulario.botao_consulta.clicked.connect(consultar_base)
-tela_inicial.botao_cadastro.clicked.connect(inserir_dados)
 tela_inicial.botao_consulta.clicked.connect(consultar_base)
-tela_inicial.botao_pesquisa.clicked.connect(busca_por_item)
+tela_inicial.botao_pesquisa.clicked.connect(apresentar_pesquisar)
+pesquisar_item.botao_buscar.clicked.connect(busca_por_item)
 tela_inicial.show()
 app.exec()
 
-# teste
