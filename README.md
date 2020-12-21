@@ -8,7 +8,7 @@ Será necessário instalar a biblioteca abaixo:
 - PyQt5
 
 ## Tela inicial
-- Ao abrir a interface nos é apresentado as opções abaixo:
+Ao abrir a interface nos é apresentado as opções abaixo:
 - Cadastrar: Permite realizar o registro de um novo atendimento na base de dados na nuvem.
 - Consultar: Permite consultar o histórico de atendimento realizados.
 - Pesquisar: Permite pesquisar por um registro específico através de campos pré definidos.
