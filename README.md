@@ -1,6 +1,14 @@
-# Sistema_de_Controle_de_Atendimento_RDS-MySQL
+## Sistema de Controle de Atendimento utilizando RDS-MySQL direto da cloud AWS
+O algoritmo consiste em um sistema de controle para consultórios via interface gráfica PyQt5, interligado a uma base de dados RDS-MySQL diretamente da cloud, não havendo a necessidade de um servidor local trazendo mais segurança para os dados. O sistema permite o controle das atividades/atendimentos realizados em um consultório de forma simples e fácil, permitindo realizar cadastro de atendimento, consultas a base e por item a escolha do profissional.
+
+## Requirements
+Será necessário instalar a biblioteca abaixo:
+
+- mysql-connector
+- PyQt5
 
 ## Tela inicial
+
 ![1](https://user-images.githubusercontent.com/40063504/102730553-dc09c700-4313-11eb-8f77-c8bff9356711.PNG)
 
 ## Tela de cadastro
