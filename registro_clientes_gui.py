@@ -27,7 +27,6 @@ cursor = db_connection.cursor()
 cursor.execute("CREATE DATABASE IF NOT EXISTS Registro")
 cursor.execute("use Registro")
 cursor.execute("CREATE TABLE IF NOT EXISTS Pacientes (ID int auto_increment, Nome varchar(50) not null, cpf varchar(50) not null, Email varchar(200) not null, Telefone varchar(20) not null, Data TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, Procedimento varchar(255) not null, Responsável varchar(100) not null, primary key (id))")
-
 ###############################################################################################################
 
 def apresentar_formulario():
@@ -124,7 +123,6 @@ def busca_por_item():
 
 
 app=QtWidgets.QApplication([])
-
 # Load das telas criadas
 tela_inicial=uic.loadUi("tela_inicial.ui")
 formulario=uic.loadUi("formulario.ui")
@@ -141,3 +139,4 @@ pesquisar_item.botao_buscar.clicked.connect(busca_por_item)
 tela_inicial.show()
 app.exec()
 
+#
