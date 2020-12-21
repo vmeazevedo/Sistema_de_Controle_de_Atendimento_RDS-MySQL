@@ -4,37 +4,15 @@ from mysql.connector import cursor
 from PyQt5 import uic, QtWidgets
 
 ###############################################################################################################
-# MySQL Workbench - Realizar a criação da base e da tabela.
-###############################################################################################################
-'''
-create database Registro;
-use Registro;
-CREATE TABLE Pacientes (
-  ID int auto_increment,
-  Nome varchar(50) not null,
-  cpf varchar(50) not null,
-  Email varchar(200) not null,
-  Telefone varchar(20) not null,
-  Data TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  Procedimento varchar(255) not null,
-  Responsável varchar(100) not null,
-  primary key (id)
-  ) engine=innodb;
-'''
-###############################################################################################################
-
-
-###############################################################################################################
 # Conexão da instância RDS - Amazon Web Service
 ###############################################################################################################
 # Preencher os campos de conexão abaixo
 host = 'localhost'      # Endpoint da instância RDS na cloud da AWS
 user = 'root'           # Username criado na hora de realizar a instância RDS
 password = ''           # Password criado na hora de realizar a instância RDS
-database = 'Registro'   # Database criada no MySQL
 
 try:
-	db_connection = mysql.connector.connect(host = host, user = user, password = password, database = database)
+	db_connection = mysql.connector.connect(host = host, user = user, password = password)
 	print("\nConexão com a base de dados realizada!\n")
 except mysql.connector.Error as error:
 	if error.errno == errorcode.ER_BAD_DB_ERROR:
@@ -43,6 +21,13 @@ except mysql.connector.Error as error:
 		print("\nUsername ou o password está errado.")
 	else:
 		print(error)
+
+cursor = db_connection.cursor()
+# Criando a database e a tabela
+cursor.execute("CREATE DATABASE IF NOT EXISTS Registro")
+cursor.execute("use Registro")
+cursor.execute("CREATE TABLE IF NOT EXISTS Pacientes (ID int auto_increment, Nome varchar(50) not null, cpf varchar(50) not null, Email varchar(200) not null, Telefone varchar(20) not null, Data TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, Procedimento varchar(255) not null, Responsável varchar(100) not null, primary key (id))")
+
 ###############################################################################################################
 
 def apresentar_formulario():
