@@ -1,11 +1,34 @@
 ## Sistema de Controle de Atendimento utilizando RDS-MySQL direto da cloud AWS
-O algoritmo consiste em um sistema de controle para consultórios via interface gráfica PyQt5, interligado a uma base de dados RDS-MySQL diretamente da cloud, não havendo a necessidade de um servidor local trazendo mais segurança para os dados. O sistema permite o controle das atividades/atendimentos realizados em um consultório de forma simples e fácil, permitindo realizar cadastro de atendimento, consultas a base e por item a escolha do profissional.
+O algoritmo consiste em um sistema de controle para consultórios via interface gráfica PyQt5, interligado a uma base de dados RDS-MySQL diretamente da cloud da AWS, não havendo a necessidade de um servidor local. O sistema permite o controle das atividades/atendimentos realizados em um consultório de forma simples e fácil, permitindo realizar cadastro de atendimento, consultas a base e por item a escolha do profissional.
 
 ## Requirements
 Será necessário instalar a biblioteca abaixo:
 
 - mysql-connector
 - PyQt5
+
+## Criando instancia RDS-MySQL
+- Selecione MySQL
+- Version: MySQL 8.0.11
+-> Free tier
+- Entre com os dados de base, username e password:
+
+db instance: "nome da base de dados"
+
+username: "seu usuário"
+
+password: "sua senha"
+
+- DB instance size e Storage é default não mexer
+- VPC: Default
+- Subnet group: default
+- Public acess: Yes
+- VPC security group: Create new
+
+New VPC security group name: <entrar_com_o_nome>
+
+- Availability Zone: escolher onde você ta conectado
+
 
 ## Tela inicial
 Ao abrir a interface nos é apresentado as opções abaixo:
