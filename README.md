@@ -9,9 +9,9 @@ Será necessário instalar a biblioteca abaixo:
 
 ## Tela inicial
 - Ao abrir a interface nos é apresentado as opções abaixo:
-Cadastrar: Permite realizar o registro de um novo atendimento na base de dados na nuvem.
-Consultar: Permite consultar o histórico de atendimento realizados.
-Pesquisar: Permite pesquisar por um registro específico através de campos pré definidos.
+- Cadastrar: Permite realizar o registro de um novo atendimento na base de dados na nuvem.
+- Consultar: Permite consultar o histórico de atendimento realizados.
+- Pesquisar: Permite pesquisar por um registro específico através de campos pré definidos.
 ![1](https://user-images.githubusercontent.com/40063504/102730553-dc09c700-4313-11eb-8f77-c8bff9356711.PNG)
 
 ## Tela de cadastro
