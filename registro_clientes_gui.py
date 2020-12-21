@@ -121,6 +121,8 @@ def busca_por_item():
         for i in range(0, len(dados_lidos)):
             for j in range(0,8):
                 resultado_por_item.tb_dados.setItem(i,j, QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
+        
+        pesquisar_item.campo_1.setText("")
 
         
 
