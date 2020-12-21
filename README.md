@@ -3,11 +3,13 @@ O algoritmo consiste em um sistema de controle para consultórios via interface 
 
 ## Requirements
 Será necessário instalar a biblioteca abaixo:
-
 - mysql-connector
 - PyQt5
 
 ## Criando instancia RDS-MySQL
+- Acessar o "Console de gerenciamento da AWS"
+- Abra o menu de serviços e selecione a opção RDS
+- Selecione a opção de "Create database"
 - Selecione MySQL
 - Version: MySQL 8.0.11
 -> Free tier
