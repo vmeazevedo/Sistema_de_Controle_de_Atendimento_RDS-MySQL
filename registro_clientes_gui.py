@@ -198,7 +198,8 @@ def busca_por_item():
                 resultado_por_item.tb_dados.setItem(i,j, QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
         
         pesquisar_item.campo_6.setText("")
-        
+
+#
 
 
 app=QtWidgets.QApplication([])
