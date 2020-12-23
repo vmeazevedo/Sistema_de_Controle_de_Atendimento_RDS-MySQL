@@ -108,18 +108,97 @@ def busca_por_item():
         
         pesquisar_item.campo_1.setText("")
 
-        
 
     elif pesquisar_item.sl_cpf.isChecked():
-        print("nome")
+        cpf = pesquisar_item.campo_2.text().title()
+        # Query para apresentar os dados pesquisados
+        sql = ("SELECT * from Pacientes WHERE cpf ='%s'") % (str(cpf))
+        cursor.execute(sql)
+        # Salvando o resultado da query em uma variável
+        dados_lidos = cursor.fetchall()
+        
+        # Informando o tamanho das linhas e colunas da base
+        resultado_por_item.tb_dados.setRowCount(len(dados_lidos))
+        resultado_por_item.tb_dados.setColumnCount(8)
+        # Realizando um loop para preencher os campos da tabela com os valores da base de dados         
+        for i in range(0, len(dados_lidos)):
+            for j in range(0,8):
+                resultado_por_item.tb_dados.setItem(i,j, QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
+        
+        pesquisar_item.campo_2.setText("")
+
     elif pesquisar_item.sl_email.isChecked():
-        print("nome")
+        email = pesquisar_item.campo_3.text().title()
+        # Query para apresentar os dados pesquisados
+        sql = ("SELECT * from Pacientes WHERE Email ='%s'") % (str(email))
+        cursor.execute(sql)
+        # Salvando o resultado da query em uma variável
+        dados_lidos = cursor.fetchall()
+        
+        # Informando o tamanho das linhas e colunas da base
+        resultado_por_item.tb_dados.setRowCount(len(dados_lidos))
+        resultado_por_item.tb_dados.setColumnCount(8)
+        # Realizando um loop para preencher os campos da tabela com os valores da base de dados         
+        for i in range(0, len(dados_lidos)):
+            for j in range(0,8):
+                resultado_por_item.tb_dados.setItem(i,j, QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
+        
+        pesquisar_item.campo_3.setText("")
+        
     elif pesquisar_item.sl_telefone.isChecked():
-        print("nome")
+        telefone = pesquisar_item.campo_4.text().title()
+        # Query para apresentar os dados pesquisados
+        sql = ("SELECT * from Pacientes WHERE Telefone ='%s'") % (str(telefone))
+        cursor.execute(sql)
+        # Salvando o resultado da query em uma variável
+        dados_lidos = cursor.fetchall()
+        
+        # Informando o tamanho das linhas e colunas da base
+        resultado_por_item.tb_dados.setRowCount(len(dados_lidos))
+        resultado_por_item.tb_dados.setColumnCount(8)
+        # Realizando um loop para preencher os campos da tabela com os valores da base de dados         
+        for i in range(0, len(dados_lidos)):
+            for j in range(0,8):
+                resultado_por_item.tb_dados.setItem(i,j, QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
+        
+        pesquisar_item.campo_4.setText("")
+        
     elif pesquisar_item.sl_procedimento.isChecked():
-        print("nome")
+        procedimento = pesquisar_item.campo_5.text().title()
+        # Query para apresentar os dados pesquisados
+        sql = ("SELECT * from Pacientes WHERE Procedimento ='%s'") % (str(procedimento))
+        cursor.execute(sql)
+        # Salvando o resultado da query em uma variável
+        dados_lidos = cursor.fetchall()
+        
+        # Informando o tamanho das linhas e colunas da base
+        resultado_por_item.tb_dados.setRowCount(len(dados_lidos))
+        resultado_por_item.tb_dados.setColumnCount(8)
+        # Realizando um loop para preencher os campos da tabela com os valores da base de dados         
+        for i in range(0, len(dados_lidos)):
+            for j in range(0,8):
+                resultado_por_item.tb_dados.setItem(i,j, QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
+        
+        pesquisar_item.campo_5.setText("")
+        
     elif pesquisar_item.sl_responsavel.isChecked():
-        print("nome")
+        responsavel = pesquisar_item.campo_6.text().title()
+        # Query para apresentar os dados pesquisados
+        sql = ("SELECT * from Pacientes WHERE Responsável ='%s'") % (str(responsavel))
+        cursor.execute(sql)
+        # Salvando o resultado da query em uma variável
+        dados_lidos = cursor.fetchall()
+        
+        # Informando o tamanho das linhas e colunas da base
+        resultado_por_item.tb_dados.setRowCount(len(dados_lidos))
+        resultado_por_item.tb_dados.setColumnCount(8)
+        # Realizando um loop para preencher os campos da tabela com os valores da base de dados         
+        for i in range(0, len(dados_lidos)):
+            for j in range(0,8):
+                resultado_por_item.tb_dados.setItem(i,j, QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
+        
+        pesquisar_item.campo_6.setText("")
+        
 
 
 app=QtWidgets.QApplication([])
