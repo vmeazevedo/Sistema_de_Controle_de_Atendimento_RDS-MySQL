@@ -1,64 +1,64 @@
-## Sistema de Controle de Atendimento utilizando RDS-MySQL direto da cloud AWS
-O algoritmo consiste em um sistema de controle para consultórios via interface gráfica PyQt5, interligado a uma base de dados RDS-MySQL diretamente da cloud da AWS, não havendo a necessidade de um servidor local. O sistema permite o controle das atividades/atendimentos realizados em um consultório de forma simples e fácil, permitindo realizar cadastro de atendimento, consultas a base e por item a escolha do profissional.
+## Attendance Control System using RDS-MySQL directly from the AWS cloud
+The algorithm consists of a control system for offices via the PyQt5 graphical interface, connected to an RDS-MySQL database directly from the AWS cloud, without the need for a local server. The system allows the control of the activities / services performed in an office in a simple and easy way, allowing to perform service registration, consultations based and by item the choice of the professional.
 
 ## Requirements
-Será necessário instalar a biblioteca abaixo:
+You will need to install the library below:
 - mysql-connector
 - PyQt5
 
-## Criando instancia RDS-MySQL
-- Acessar o "Console de gerenciamento da AWS"
-- Abra o menu de serviços e selecione a opção RDS
-- Selecione a opção de "Create database"
-- Selecione MySQL
+## Creating RDS-MySQL instance
+- Access the "AWS Management Console"
+- Open the services menu and select the RDS option
+- Select the "Create database" option
+- Select MySQL
 - Version: MySQL 8.0.11
 -> Free tier
-- Entre com os dados de base, username e password:
+- Enter the basic data, username and password:
 
-db instance: "nome da base de dados"
+db instance: "database name"
 
-username: "seu usuário"
+username: "your username"
 
-password: "sua senha"
+password: "your password"
 
-- DB instance size e Storage é default não mexer
+- DB instance size and Storage is default not to mess
 - VPC: Default
 - Subnet group: default
-- Public acess: Yes
+- Public access: Yes
 - VPC security group: Create new
 
-New VPC security group name: <entrar_com_o_nome>
+New VPC security group name: <enter_com_the_name>
 
-- Availability Zone: escolher onde você ta conectado
+- Availability Zone: choose where you are connected
 
 
-## Tela inicial
-Ao abrir a interface nos é apresentado as opções abaixo:
-- Cadastrar: Permite realizar o registro de um novo atendimento na base de dados na nuvem.
-- Consultar: Permite consultar o histórico de atendimento realizados.
-- Pesquisar: Permite pesquisar por um registro específico através de campos pré definidos.
+## Home screen
+When opening the interface, the following options are presented:
+- Register: Allows you to register a new service in the cloud database.
+- Consult: Allows you to consult the service history performed.
+- Search: Allows you to search for a specific record through pre-defined fields.
 
 ![1](https://user-images.githubusercontent.com/40063504/102730553-dc09c700-4313-11eb-8f77-c8bff9356711.PNG)
 
-## Tela de cadastro
-- Tela de cadastro inicialmente
+## Registration screen
+- Initial registration screen
 
 ![2](https://user-images.githubusercontent.com/40063504/102730555-df04b780-4313-11eb-9820-b56c3fc1fee8.PNG)
 
-- Tela de cadastro preenchida. Ao clicar me "Inserir Dados" os dados registrados vão automaticamente para a base de dados RDS na cloud.
+- Registration screen filled. By clicking on "Insert Data" the registered data will automatically go to the RDS database in the cloud.
 
 ![3](https://user-images.githubusercontent.com/40063504/102730559-e1671180-4313-11eb-8f32-8503ac5f7cab.PNG)
 
-## Tela de consulta a base
-- Quando clicamos "Consultar" a interface trás para o usuário todo o histórico de atendimento realizado.
+## Base query screen
+- When we click "Consult" the interface brings the entire service history to the user.
 
 ![4](https://user-images.githubusercontent.com/40063504/102730563-e3c96b80-4313-11eb-9c37-cf54331cf0db.PNG)
 
-## Tela de pesquisa por item
-- Nessa tela podemos realizar uma pesquisa com filtros através dos checkbox e os campos de preenchimento.
+## Search screen by item
+- In this screen we can perform a search with filters through the checkboxes and the fields.
 
 ![5](https://user-images.githubusercontent.com/40063504/102730587-edeb6a00-4313-11eb-9b48-e8442ebd5798.PNG)
 
-- Resultado da pesquisa por item.
+- Search result by item.
 
 ![4](https://user-images.githubusercontent.com/40063504/102730593-f17ef100-4313-11eb-8691-144634cae76d.PNG)
